@@ -18,26 +18,38 @@
     <div class="row">
       <div class="col-lg-3 text-center">
         <h2 id="scoreTitle">Score</h2>
-        <h3 id="score">0</h3>
+        <h3 id="scoreDiv">0</h3>
       </div>
-      <div class="col-lg-6"></div>
+      <div class="col-lg-6 mt-2 text-center">
+        <button type="button" class="btn btn-success btn-lg" id="startBtn">Start Quiz</button>
+      </div>
       <div class="col-lg-3 text-center">
         <h2 id="timeTitle">Time</h2>
-        <h3 id="time">0</h3>
+        <h3 id="timeDiv">0</h3>
       </div>
     </div>
   </div>
   <div class="container bg-white mt-4 pt-3 pb-3 rounded text-center">
-    <h1 id="questionTitle">Questions Go Here!</h1>
-    <ul class="questions">
-      <li <button type="button" class="btn btn-danger" id="qOne">Question 1</button></li>
+    <div id="openDiv">
+      <h1>How much do you know about JavaScript?</h1>
+      <h3>Please click the start button above to begin the quiz! </h3>
+    </div>
+    <div id="quizDiv" class="hidden">
+    <h1 id="questionDiv">Questions Go Here!</h1>
+    <ul id="answersDiv">
+      <li <button type="button" class="btn btn-danger" id="aOne">Answer 1</button></li>
       <br>
-      <li <button type="button" class="btn btn-danger" id="qTwo">Question 2</button></li>
+      <li <button type="button" class="btn btn-danger" id="aTwo">Answer 2</button></li>
       <br>
-      <li <button type="button" class="btn btn-danger" id="qThree">Question 3</button></li>
+      <li <button type="button" class="btn btn-danger" id="aThree">Answer 3</button></li>
       <br>
-      <li <button type="button" class="btn btn-danger" id="qFour">Question 4</button></li>
+      <li <button type="button" class="btn btn-danger" id="aFour">Answer 4</button></li>
     </ul>
+  </div>
+    <div id="response" class="hidden">
+      <hr>
+      <h2 id="rightWrong">Right or Wrong</h2>
+    </div>
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
