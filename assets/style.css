@@ -1,0 +1,13 @@
+body {
+    background-color: black;
+}
+
+.btn { 
+    width: 200px;
+    margin-top: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
