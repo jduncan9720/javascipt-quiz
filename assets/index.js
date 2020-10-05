@@ -46,8 +46,6 @@ var questionsAns = [
     }];
 var currQuestion = 0;
 var secondsLeft = 60;
-
-
 //Global Variables Above//
 
 start.addEventListener("click", startQuiz)
@@ -74,6 +72,8 @@ function startQuiz() {
 }
 
 function makeQuestions(i) {
+    document.getElementById("responseRight").setAttribute("class", "hidden")
+    document.getElementById("responseWrong").setAttribute("class", "hidden")
     question.textContent = questionsAns[i].question
     answerBtn1.textContent = questionsAns[i].answer1
     answerBtn2.textContent = questionsAns[i].answer2
@@ -81,30 +81,22 @@ function makeQuestions(i) {
     answerBtn4.textContent = questionsAns[i].answer4
 }
 
-//Good to here!
-
-// answer.addEventListener("click", function(event) {
-//     var element = event.target;
-//     // If that element is a button...
-//     if (element.matches("button") === true) {
-//       // Get its text
-//       var curranswer = document.getElementById
-//     }
-//     console.log(curranswer)
-// });
-
 function answerCheck(button) {
     console.log(button);
     console.log(answers[currQuestion])
-    console.log(questionsAns[currQuestion]);
-    console.log(questionsAns[currQuestion].textContent);
 
     if (button === answers[currQuestion]) {
-        currQuestion++;
-        makeQuestions(currQuestion);
+        document.getElementById("responseRight").removeAttribute("class")
+        setTimeout(() => {
+            currQuestion++;
+            makeQuestions(currQuestion);
+        }, 2000);
     } else {
-        alert("wrong")
-
+        document.getElementById("responseWrong").removeAttribute("class")
+        setTimeout(() => {
+            currQuestion++;
+            makeQuestions(currQuestion);
+        }, 2000);
     }
 }
 
@@ -120,3 +112,13 @@ answerBtn3.addEventListener("click", function(){
 answerBtn4.addEventListener("click", function(){
     answerCheck("answer4");
 });
+
+// answer.addEventListener("click", function(event) {
+//     var element = event.target;
+//     // If that element is a button...
+//     if (element.matches("button") === true) {
+//       // Get its text
+//       var curranswer = document.getElementById
+//     }
+//     console.log(curranswer)
+// });
