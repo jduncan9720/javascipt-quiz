@@ -97,7 +97,6 @@ function answerCheck(button) {
         }, 2000);
     } else {
         document.getElementById("responseWrong").removeAttribute("class")
-        currentScore--
         score.textContent = currentScore;
         setTimeout(() => {
             currQuestion++;
