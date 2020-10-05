@@ -46,13 +46,15 @@ var questionsAns = [
     }];
 var currQuestion = 0;
 var secondsLeft = 60;
+var currentScore = 0
+
 //Global Variables Above//
 
 start.addEventListener("click", startQuiz)
 
 function startQuiz() {
     currQuestion = 0;
-    score.textContent = 0;
+    score.textContent = currentScore;
     timeLeft.textContent = secondsLeft;
     document.getElementById("quizDiv").removeAttribute("class")
     document.getElementById("openDiv").setAttribute("class", "hidden")
@@ -87,12 +89,16 @@ function answerCheck(button) {
 
     if (button === answers[currQuestion]) {
         document.getElementById("responseRight").removeAttribute("class")
+        currentScore++
+        score.textContent = currentScore;
         setTimeout(() => {
             currQuestion++;
             makeQuestions(currQuestion);
         }, 2000);
     } else {
         document.getElementById("responseWrong").removeAttribute("class")
+        currentScore--
+        score.textContent = currentScore;
         setTimeout(() => {
             currQuestion++;
             makeQuestions(currQuestion);
