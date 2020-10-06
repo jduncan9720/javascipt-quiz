@@ -65,13 +65,19 @@ function startQuiz() {
         var downloadTimer = setInterval(function () {
             if (secondsLeft <= 0) {
                 clearInterval(downloadTimer);
-                alert("time's up")
-            }
+                endGame()
+            } 
             timeLeft.textContent = secondsLeft--;
             console.log(secondsLeft)
         }, 1000);
     }
 }
+
+function endGame () {
+    document.getElementById("quizDiv").setAttribute("class", "hidden")
+    document.getElementById("highScoresDiv").removeAttribute("class")
+
+};
 
 function makeQuestions(i) {
     document.getElementById("responseRight").setAttribute("class", "hidden")
@@ -98,6 +104,7 @@ function answerCheck(button) {
     } else {
         document.getElementById("responseWrong").removeAttribute("class")
         score.textContent = currentScore;
+        secondsLeft -= 10;
         setTimeout(() => {
             currQuestion++;
             makeQuestions(currQuestion);
