@@ -8,6 +8,7 @@ var answerBtn2 = document.getElementById("aTwo");
 var answerBtn3 = document.getElementById("aThree");
 var answerBtn4 = document.getElementById("aFour");
 var finalScore = document.getElementById("final-score")
+var submitBtn = document.getElementById("sBtn")
 var answers = ["answer1", "answer3", "answer1", "answer2", "answer3"];
 var questionsAns = [
     {
@@ -130,6 +131,9 @@ answerBtn4.addEventListener("click", function(){
     answerCheck("answer4");
 });
 
+submitBtn.addEventListener("click", function(){
+    
+})
 // answer.addEventListener("click", function(event) {
 //     var element = event.target;
 //     // If that element is a button...
