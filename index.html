@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  <!-- Header with Score - Start Button - Time -->
   <div class="container-fluid bg-secondary text-white">
     <div class="row">
       <div class="col-lg-3 text-center">
@@ -29,11 +30,13 @@
       </div>
     </div>
   </div>
+  <!-- Landing Div -->
   <div class="container bg-white mt-4 pt-3 pb-3 rounded text-center">
     <div id="openDiv">
       <h1>How much do you know about JavaScript?</h1>
       <h3>Please click the start button above to begin the quiz! </h3>
     </div>
+    <!-- Quiz Div -->
     <div id="quizDiv" class="hidden">
       <h1 id="questionDiv">Questions Go Here!</h1>
       <ul id="answersDiv">
@@ -46,6 +49,7 @@
         <li <button type="button" class="btn btn-danger" id="aFour">Answer 4</button></li>
       </ul>
     </div>
+    <!-- Right or Wrong Divs -->
     <div id="responseRight" class="hidden">
       <hr>
       <h2 id="right">That is Correct!</h2>
@@ -54,12 +58,19 @@
       <hr>
       <h2 id="wrong">That is Incorrect!</h2>
     </div>
-
+    <!-- Ending Score Div -->
     <div id="highScoresDiv" class="hidden">
       <h1>Game Over</h1>
       <br>
-      <h1>Enter Your Name:</h1>
-
+      <h2>Your score is = <span id="final-score"></span></h2>
+      <br>
+      <form class="form-inline justify-content-center formName mt-3">
+        <div class="form-group">
+          <label for="name"><h4>Enter your name:</h4></label>
+          <input type="name" class="form-control inputName" id="name">
+        </div>
+        <button type="submit" class="btn btn-danger sBtn">Submit</button>
+      </form>
     </div>
   </div>
   <!-- Optional JavaScript -->

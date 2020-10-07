@@ -7,6 +7,7 @@ var answerBtn1 = document.getElementById("aOne");
 var answerBtn2 = document.getElementById("aTwo");
 var answerBtn3 = document.getElementById("aThree");
 var answerBtn4 = document.getElementById("aFour");
+var finalScore = document.getElementById("final-score")
 var answers = ["answer1", "answer3", "answer1", "answer2", "answer3"];
 var questionsAns = [
     {
@@ -53,17 +54,20 @@ var currentScore = 0
 start.addEventListener("click", startQuiz)
 
 function startQuiz() {
+    currentScore = 0;
     currQuestion = 0;
+    secondsLeft = 60;
     score.textContent = currentScore;
     timeLeft.textContent = secondsLeft;
     document.getElementById("quizDiv").removeAttribute("class")
     document.getElementById("openDiv").setAttribute("class", "hidden")
+    document.getElementById("highScoresDiv").setAttribute("class", "hidden")
     countdown();
     makeQuestions(currQuestion);
 
     function countdown() {
         var downloadTimer = setInterval(function () {
-            if (secondsLeft <= 0) {
+            if (secondsLeft <= 0 || currQuestion > 4){
                 clearInterval(downloadTimer);
                 endGame()
             } 
@@ -72,12 +76,6 @@ function startQuiz() {
         }, 1000);
     }
 }
-
-function endGame () {
-    document.getElementById("quizDiv").setAttribute("class", "hidden")
-    document.getElementById("highScoresDiv").removeAttribute("class")
-
-};
 
 function makeQuestions(i) {
     document.getElementById("responseRight").setAttribute("class", "hidden")
@@ -94,8 +92,8 @@ function answerCheck(button) {
     console.log(answers[currQuestion])
 
     if (button === answers[currQuestion]) {
-        document.getElementById("responseRight").removeAttribute("class")
-        currentScore++
+        document.getElementById("responseRight").removeAttribute("class");
+        currentScore++;
         score.textContent = currentScore;
         setTimeout(() => {
             currQuestion++;
@@ -111,6 +109,13 @@ function answerCheck(button) {
         }, 2000);
     }
 }
+
+function endGame () {
+    document.getElementById("quizDiv").setAttribute("class", "hidden")
+    document.getElementById("highScoresDiv").removeAttribute("class")
+    finalScore.textContent = currentScore;
+
+};
 
 answerBtn1.addEventListener("click", function(){
     answerCheck("answer1");

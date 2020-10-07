@@ -7,6 +7,19 @@ body {
     font-size: 23px;
 }
 
+.sBtn {
+    margin-top: 0px;
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+h4 {
+    margin-bottom: 0;
+}
+.inputName{
+    margin-left: 15px;
+    font-size: 20px;}
+
 ul {
     list-style-type: none;
     padding-inline-start: 0px;
