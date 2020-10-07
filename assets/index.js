@@ -68,10 +68,10 @@ function startQuiz() {
 
     function countdown() {
         var downloadTimer = setInterval(function () {
-            if (secondsLeft <= 0 || currQuestion > 4){
+            if (secondsLeft <= 0 || currQuestion > 4) {
                 clearInterval(downloadTimer);
                 endGame()
-            } 
+            }
             timeLeft.textContent = secondsLeft--;
             console.log(secondsLeft)
         }, 1000);
@@ -99,7 +99,7 @@ function answerCheck(button) {
         setTimeout(() => {
             currQuestion++;
             makeQuestions(currQuestion);
-        }, 2000);
+        }, 1000);
     } else {
         document.getElementById("responseWrong").removeAttribute("class")
         score.textContent = currentScore;
@@ -107,33 +107,33 @@ function answerCheck(button) {
         setTimeout(() => {
             currQuestion++;
             makeQuestions(currQuestion);
-        }, 2000);
+        }, 1000);
     }
 }
 
-function endGame () {
+function endGame() {
     document.getElementById("quizDiv").setAttribute("class", "hidden")
     document.getElementById("highScoresDiv").removeAttribute("class")
     finalScore.textContent = currentScore;
 
 };
 
-answerBtn1.addEventListener("click", function(){
+answerBtn1.addEventListener("click", function () {
     answerCheck("answer1");
 });
-answerBtn2.addEventListener("click", function(){
+answerBtn2.addEventListener("click", function () {
     answerCheck("answer2");
 });
-answerBtn3.addEventListener("click", function(){
+answerBtn3.addEventListener("click", function () {
     answerCheck("answer3");
 });
-answerBtn4.addEventListener("click", function(){
+answerBtn4.addEventListener("click", function () {
     answerCheck("answer4");
 });
 
- submitBtn.addEventListener("click", function(){
-     window.location.href = "/highscore.html"
- });
+submitBtn.addEventListener("click", function () {
+    window.location.href = "/highscore.html"
+});
 
 // answer.addEventListener("click", function(event) {
 //     var element = event.target;
