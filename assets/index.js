@@ -9,6 +9,9 @@ var answerBtn3 = document.getElementById("aThree");
 var answerBtn4 = document.getElementById("aFour");
 var finalScore = document.getElementById("final-score")
 var submitBtn = document.querySelector(".sBtn")
+var highscoreBtn = document.getElementById("highscoresbtn")
+var userName = document.getElementById("userName")
+var userScore = document.getElementById("userScore")
 var answers = ["answer1", "answer3", "answer1", "answer2", "answer3"];
 var questionsAns = [
     {
@@ -63,6 +66,7 @@ function startQuiz() {
     document.getElementById("quizDiv").removeAttribute("class")
     document.getElementById("openDiv").setAttribute("class", "hidden")
     document.getElementById("highScoresDiv").setAttribute("class", "hidden")
+    document.getElementById("highScoreList").setAttribute("class", "hidden")
     countdown();
     makeQuestions(currQuestion);
 
@@ -115,7 +119,6 @@ function endGame() {
     document.getElementById("quizDiv").setAttribute("class", "hidden")
     document.getElementById("highScoresDiv").removeAttribute("class")
     finalScore.textContent = currentScore;
-
 };
 
 answerBtn1.addEventListener("click", function () {
@@ -132,7 +135,20 @@ answerBtn4.addEventListener("click", function () {
 });
 
 submitBtn.addEventListener("click", function () {
-    window.location.href = "/highscore.html"
+    var input = document.querySelector(".inputName").value;
+    var user = {
+        Name: input,
+        Score: currentScore
+      };
+      localStorage.setItem("user", JSON.stringify(user));
+});
+
+highscoreBtn.addEventListener("click", function() {
+    var lastUser = JSON.parse(localStorage.getItem("user"));
+    userName.textContent = lastUser.Name
+    userScore.textContent = lastUser.Score
+    document.getElementById("highScoresDiv").setAttribute("class", "hidden")
+    document.getElementById("highScoreList").removeAttribute("class")
 });
 
 // answer.addEventListener("click", function(event) {
