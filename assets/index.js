@@ -7,11 +7,12 @@ var answerBtn1 = document.getElementById("aOne");
 var answerBtn2 = document.getElementById("aTwo");
 var answerBtn3 = document.getElementById("aThree");
 var answerBtn4 = document.getElementById("aFour");
-var finalScore = document.getElementById("final-score")
-var submitBtn = document.querySelector(".sBtn")
-var highscoreBtn = document.getElementById("highscoresbtn")
-var userName = document.getElementById("userName")
-var userScore = document.getElementById("userScore")
+var finalScore = document.getElementById("final-score");
+var submitBtn = document.querySelector(".sBtn");
+var highscoreBtn = document.getElementById("highscoresbtn");
+var userName = document.getElementById("userName");
+var userScore = document.getElementById("userScore");
+var highScoreDiv = document.getElementById("scoresDiv")
 var answers = ["answer1", "answer3", "answer1", "answer2", "answer3"];
 var questionsAns = [
     {
@@ -52,6 +53,7 @@ var questionsAns = [
 var currQuestion = 0;
 var secondsLeft = 60;
 var currentScore = 0
+var users = [];
 
 //Global Variables Above//
 
@@ -134,29 +136,33 @@ answerBtn4.addEventListener("click", function () {
     answerCheck("answer4");
 });
 
-submitBtn.addEventListener("click", function () {
-    var input = document.querySelector(".inputName").value;
+submitBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    var input = document.querySelector(".inputName").value.trim();
     var user = {
         Name: input,
         Score: currentScore
       };
-      localStorage.setItem("user", JSON.stringify(user));
+      users.push(user)
+      console.log(users)
+      localStorage.setItem("users", JSON.stringify(users));
+      
+      renderUsers()
 });
 
+function renderUsers(){
+    for (let i = 0; i < users.length; i++) {
+        var user = users[i];
+        
+        var newDiv = document.createElement("div");
+        newDiv.textContent = user.Name + ":" + user.Score;
+        newDiv.setAttribute("data-index", i)
+        highScoreDiv.appendChild(newDiv)
+    }
+}
+
 highscoreBtn.addEventListener("click", function() {
-    var lastUser = JSON.parse(localStorage.getItem("user"));
-    userName.textContent = lastUser.Name
-    userScore.textContent = lastUser.Score
     document.getElementById("highScoresDiv").setAttribute("class", "hidden")
     document.getElementById("highScoreList").removeAttribute("class")
 });
 
-// answer.addEventListener("click", function(event) {
-//     var element = event.target;
-//     // If that element is a button...
-//     if (element.matches("button") === true) {
-//       // Get its text
-//       var curranswer = document.getElementById
-//     }
-//     console.log(curranswer)
-// });
