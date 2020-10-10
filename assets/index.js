@@ -15,6 +15,7 @@ var userScore = document.getElementById("userScore");
 var highScoreDiv = document.getElementById("scoresDiv")
 var answers = ["answer1", "answer3", "answer1", "answer2", "answer3"];
 var clearScores = document.getElementById("clearBtn")
+var restartBtn = document.getElementById("restartBtn")
 var questionsAns = [
     {
         question: "Inside which HTML element do we put the JavaScript?",
@@ -62,6 +63,7 @@ var users = [];
 
 
 start.addEventListener("click", startQuiz)
+restartBtn.addEventListener("click", startQuiz)
 
 function startQuiz() {
     currentScore = 0;
@@ -154,7 +156,7 @@ submitBtn.addEventListener("click", function (event) {
     users.push(user)
     console.log(users)
     localStorage.setItem("users", JSON.stringify(users));
-
+    document.querySelector(".inputName").value = "";
     renderUsers()
 });
 
@@ -179,3 +181,5 @@ clearScores.addEventListener("click", function () {
     localStorage.setItem("users", JSON.stringify(users));
     renderUsers()
 })
+
+
