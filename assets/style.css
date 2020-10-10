@@ -1,5 +1,6 @@
 body {
     background-color: black;
+    font-family: 'Playfair Display', serif;
 }
 
 .btn { 
@@ -21,7 +22,8 @@ h4 {
 }
 
 .nameTxt{
-    color: blue
+    color: blue;
+    font-size: 35px;
 }
 ul {
     list-style-type: none;

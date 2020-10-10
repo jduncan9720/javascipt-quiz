@@ -40,7 +40,7 @@ var questionsAns = [
     },
     {
         question: "How to write an IF statement in JavaScript?",
-        answer1: "if i = 5",
+        answer1: "if this works, I'll be surprised!",
         answer2: "if (i == 5)",
         answer3: "if i == 5 then",
         answer4: "if i = 5 then"
@@ -57,10 +57,7 @@ var secondsLeft = 60;
 var currentScore = 0
 var users = [];
 
-
-
 //Global Variables Above//
-
 
 start.addEventListener("click", startQuiz)
 restartBtn.addEventListener("click", startQuiz)
@@ -68,7 +65,7 @@ restartBtn.addEventListener("click", startQuiz)
 function startQuiz() {
     currentScore = 0;
     currQuestion = 0;
-    secondsLeft = 60;
+    secondsLeft = 30;
     score.textContent = currentScore;
     timeLeft.textContent = secondsLeft;
     highScoreDiv.innerHTML = "";
@@ -107,7 +104,7 @@ function answerCheck(button) {
 
     if (button === answers[currQuestion]) {
         document.getElementById("responseRight").removeAttribute("class");
-        currentScore++;
+        currentScore += 5;
         score.textContent = currentScore;
         setTimeout(() => {
             currQuestion++;
@@ -116,7 +113,7 @@ function answerCheck(button) {
     } else {
         document.getElementById("responseWrong").removeAttribute("class")
         score.textContent = currentScore;
-        secondsLeft -= 10;
+        secondsLeft -= 5;
         setTimeout(() => {
             currQuestion++;
             makeQuestions(currQuestion);
@@ -164,7 +161,7 @@ function renderUsers() {
     for (let i = 0; i < users.length; i++) {
         var user = users[i];
         var newDiv = document.createElement("div");
-        newDiv.textContent = user.Name + ":" + user.Score;
+        newDiv.textContent = user.Name + "    :    " + user.Score;
         newDiv.setAttribute("data-index", i)
         newDiv.setAttribute("class", "nameTxt")
         highScoreDiv.appendChild(newDiv)
@@ -179,7 +176,7 @@ highscoreBtn.addEventListener("click", function () {
 clearScores.addEventListener("click", function () {
     users = [];
     localStorage.setItem("users", JSON.stringify(users));
-    renderUsers()
+    highScoreDiv.innerHTML = ""
 })
 
 
