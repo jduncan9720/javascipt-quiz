@@ -12,14 +12,17 @@ body {
     margin-left: 20px;
     font-size: 18px;
 }
-
 h4 {
     margin-bottom: 0;
 }
 .inputName{
     margin-left: 15px;
-    font-size: 20px;}
+    font-size: 20px;
+}
 
+.nameTxt{
+    color: blue
+}
 ul {
     list-style-type: none;
     padding-inline-start: 0px;

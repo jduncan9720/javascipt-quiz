@@ -14,6 +14,7 @@ var userName = document.getElementById("userName");
 var userScore = document.getElementById("userScore");
 var highScoreDiv = document.getElementById("scoresDiv")
 var answers = ["answer1", "answer3", "answer1", "answer2", "answer3"];
+var clearScores = document.getElementById("clearBtn")
 var questionsAns = [
     {
         question: "Inside which HTML element do we put the JavaScript?",
@@ -55,7 +56,10 @@ var secondsLeft = 60;
 var currentScore = 0
 var users = [];
 
+
+
 //Global Variables Above//
+
 
 start.addEventListener("click", startQuiz)
 
@@ -65,6 +69,7 @@ function startQuiz() {
     secondsLeft = 60;
     score.textContent = currentScore;
     timeLeft.textContent = secondsLeft;
+    highScoreDiv.innerHTML = "";
     document.getElementById("quizDiv").removeAttribute("class")
     document.getElementById("openDiv").setAttribute("class", "hidden")
     document.getElementById("highScoresDiv").setAttribute("class", "hidden")
@@ -138,31 +143,39 @@ answerBtn4.addEventListener("click", function () {
 
 submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
+    if (JSON.parse(localStorage.getItem("users")) !== null) {
+        users = JSON.parse(localStorage.getItem("users"));
+    }
     var input = document.querySelector(".inputName").value.trim();
     var user = {
         Name: input,
         Score: currentScore
-      };
-      users.push(user)
-      console.log(users)
-      localStorage.setItem("users", JSON.stringify(users));
-      
-      renderUsers()
+    };
+    users.push(user)
+    console.log(users)
+    localStorage.setItem("users", JSON.stringify(users));
+
+    renderUsers()
 });
 
-function renderUsers(){
+function renderUsers() {
     for (let i = 0; i < users.length; i++) {
         var user = users[i];
-        
         var newDiv = document.createElement("div");
         newDiv.textContent = user.Name + ":" + user.Score;
         newDiv.setAttribute("data-index", i)
+        newDiv.setAttribute("class", "nameTxt")
         highScoreDiv.appendChild(newDiv)
     }
 }
 
-highscoreBtn.addEventListener("click", function() {
+highscoreBtn.addEventListener("click", function () {
     document.getElementById("highScoresDiv").setAttribute("class", "hidden")
     document.getElementById("highScoreList").removeAttribute("class")
 });
 
+clearScores.addEventListener("click", function () {
+    users = [];
+    localStorage.setItem("users", JSON.stringify(users));
+    renderUsers()
+})
